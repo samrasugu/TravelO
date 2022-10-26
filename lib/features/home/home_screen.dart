@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       backgroundImage: NetworkImage(
                         'https://images.pexels.com/photos/13600148/pexels-photo-13600148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                       ),
-                      radius: 18,
+                      radius: 17,
                     ),
                   ),
                   SizedBox(

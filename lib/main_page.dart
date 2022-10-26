@@ -36,7 +36,11 @@ class _MainPageState extends State<MainPage> {
       body: pages[_selectedIndex],
       bottomNavigationBar: Container(
         height: 70,
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(
+          left: 10,
+          right: 10,
+          bottom: 10,
+        ),
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(20)),
           child: BottomNavigationBar(
@@ -58,7 +62,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.explore,
+                    Icons.explore_outlined,
                   ),
                   label: 'Explore',
                 ),
