@@ -19,7 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
       // crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20.0,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -52,10 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         const SizedBox(
-          height: 40,
+          height: 20,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 10.0),
+          padding: const EdgeInsets.only(left: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
@@ -80,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 20,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 10.0),
+          padding: const EdgeInsets.only(left: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
@@ -93,6 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
+        ),
+        const SizedBox(
+          height: 10,
         ),
         const Categories(),
         const SizedBox(

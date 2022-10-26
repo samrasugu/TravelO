@@ -17,19 +17,25 @@ class _TopTripsState extends State<TopTrips> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Top Trips',
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w800,
+              const Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text(
+                  'Top Trips',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ),
-              Text(
-                'Explore',
-                style: TextStyle(
-                  fontSize: 17,
-                  color: Colors.grey.shade500,
-                  fontWeight: FontWeight.w800,
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Text(
+                  'Explore',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.grey.shade500,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ),
             ],
@@ -45,6 +51,19 @@ class _TopTripsState extends State<TopTrips> {
                 itemBuilder: (context, index) {
                   return Container(
                     width: 170,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade200,
+                          blurRadius: 5.0,
+                          spreadRadius: 5.0,
+                        ),
+                      ],
+                    ),
                     margin: const EdgeInsets.all(5),
                     child: Column(
                       children: [
@@ -52,12 +71,25 @@ class _TopTripsState extends State<TopTrips> {
                         SizedBox(
                           height: 130,
                           // width: 17,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  'https://images.pexels.com/photos/13415959/pexels-photo-13415959.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
-                                ),
+                          // child: Container(
+                          //   decoration: const BoxDecoration(
+                          //     image: DecorationImage(
+                          //       image: NetworkImage(
+                          //         'https://images.pexels.com/photos/13415959/pexels-photo-13415959.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+                          //       ),
+                          //       fit: BoxFit.cover,
+                          //     ),
+                          //   ),
+                          // ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              child: Image.network(
+                                'https://images.pexels.com/photos/13415959/pexels-photo-13415959.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+                                width: 160,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -67,16 +99,19 @@ class _TopTripsState extends State<TopTrips> {
                           height: 20,
                         ),
                         // Text
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text('De Louvre\nCamp Nou'),
-                            Icon(
-                              Icons.favorite_border,
-                              size: 25,
-                              color: Colors.red,
-                            )
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              Text('De Louvre\nCamp Nou'),
+                              Icon(
+                                Icons.favorite_border,
+                                size: 25,
+                                color: Colors.red,
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),
