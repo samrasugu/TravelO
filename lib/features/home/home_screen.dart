@@ -14,100 +14,107 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      // crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20.0,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: const [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 20,
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        'https://images.pexels.com/photos/13600148/pexels-photo-13600148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: const [
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 17,
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                            'https://images.pexels.com/photos/13600148/pexels-photo-13600148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                          ),
+                          radius: 17,
+                        ),
                       ),
-                      radius: 17,
-                    ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        'Hi, Sam!',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                        ),
+                      )
+                    ],
                   ),
-                  SizedBox(
-                    width: 15,
+                  // like button
+                  CustomIcon(
+                    icon: Icons.notifications_none_rounded,
+                    onTap: () {},
                   ),
-                  Text(
-                    'Hi, Jennifer!',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                    ),
-                  )
                 ],
               ),
-              // like button
-              CustomIcon(
-                icon: Icons.notifications_none_rounded,
-                onTap: () {},
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  Text(
+                    'Where do\nyou want to go?',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              Text(
-                'Where do\nyou want to go?',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w900,
-                ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: CustomSearchBar(),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  Text(
+                    'Categories',
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Categories(),
+            const SizedBox(
+              height: 20,
+            ),
+            const TopTrips()
+          ],
         ),
-        const SizedBox(
-          height: 20,
-        ),
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: CustomSearchBar(),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              Text(
-                'Categories',
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        const Categories(),
-        const SizedBox(
-          height: 20,
-        ),
-        const TopTrips()
-      ],
+      ),
     );
   }
 }
