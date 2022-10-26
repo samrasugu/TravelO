@@ -37,46 +37,45 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: Container(
         height: 70,
         margin: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          border: Border.all(width: 1.0),
-          // borderRadius: BorderRadius.circular(5),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          child: BottomNavigationBar(
+              currentIndex: _selectedIndex,
+              onTap: navigateBottomBar,
+              type: BottomNavigationBarType.fixed,
+              showUnselectedLabels: false,
+              showSelectedLabels: false,
+              backgroundColor: Colors.black,
+              selectedItemColor: Colors.amberAccent.shade200,
+              unselectedItemColor: Colors.grey,
+              elevation: 1,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home_rounded,
+                  ),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.explore,
+                  ),
+                  label: 'Explore',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.favorite_border_rounded,
+                  ),
+                  label: 'Favorite',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.person_rounded,
+                  ),
+                  label: 'Account',
+                ),
+              ]),
         ),
-        child: BottomNavigationBar(
-            currentIndex: _selectedIndex,
-            onTap: navigateBottomBar,
-            type: BottomNavigationBarType.fixed,
-            showUnselectedLabels: false,
-            showSelectedLabels: false,
-            backgroundColor: Colors.black,
-            selectedItemColor: Colors.amberAccent.shade200,
-            unselectedItemColor: Colors.white,
-            elevation: 1,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_rounded,
-                ),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.explore,
-                ),
-                label: 'Explore',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.favorite_border_rounded,
-                ),
-                label: 'Favorite',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.settings,
-                ),
-                label: 'Account',
-              ),
-            ]),
       ),
     );
   }

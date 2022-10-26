@@ -60,7 +60,7 @@ class _TopTripsState extends State<TopTrips> {
                         BoxShadow(
                           color: Colors.grey.shade200,
                           blurRadius: 5.0,
-                          spreadRadius: 5.0,
+                          spreadRadius: 10.0,
                         ),
                       ],
                     ),
@@ -82,7 +82,7 @@ class _TopTripsState extends State<TopTrips> {
                           //   ),
                           // ),
                           child: Padding(
-                            padding: const EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.all(7.0),
                             child: ClipRRect(
                               borderRadius: const BorderRadius.all(
                                 Radius.circular(20),
@@ -103,12 +103,30 @@ class _TopTripsState extends State<TopTrips> {
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
-                              Text('De Louvre\nCamp Nou'),
-                              Icon(
-                                Icons.favorite_border,
-                                size: 25,
-                                color: Colors.red,
+                            children: [
+                              const Text('De Louvre\nCamp Nou'),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.shade200,
+                                      blurRadius: 5.0,
+                                      spreadRadius: 3.0,
+                                    ),
+                                  ],
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(5.0),
+                                  child: Icon(
+                                    Icons.favorite_border,
+                                    size: 25,
+                                    color: Colors.red,
+                                  ),
+                                ),
                               )
                             ],
                           ),

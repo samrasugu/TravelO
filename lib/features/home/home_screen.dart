@@ -49,7 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               // like button
-              CustomIcon(icon: Icons.notifications, onTap: () {})
+              CustomIcon(
+                icon: Icons.notifications_none_rounded,
+                onTap: () {},
+              ),
             ],
           ),
         ),

@@ -14,19 +14,39 @@ class CustomIcon extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          color: Colors.red,
+          color: Colors.grey.shade300,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade100,
+              blurRadius: 10.0,
+              spreadRadius: 3.0,
+            ),
+          ],
         ),
-        child: Container(
-          // width: 20,
-          // height: 20,
-          decoration: BoxDecoration(
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Container(
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(50),
-              border: Border.all(width: 2.0, color: Colors.red)),
-          padding: const EdgeInsets.all(5.0),
-          child: Icon(
-            icon,
-            size: 30,
+              borderRadius: const BorderRadius.all(
+                Radius.circular(20),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade200,
+                  blurRadius: 5.0,
+                  spreadRadius: 3.0,
+                ),
+              ],
+            ),
+            padding: const EdgeInsets.all(3.0),
+            child: Icon(
+              icon,
+              size: 25,
+              color: Colors.red,
+            ),
           ),
         ),
       ),
