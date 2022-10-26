@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelo/features/account/screens/settings_list_screen.dart';
 import 'package:travelo/features/home/home_screen.dart';
 
 class MainPage extends StatefulWidget {
@@ -19,9 +20,7 @@ class _MainPageState extends State<MainPage> {
     const Center(
       child: Text('Favorites'),
     ),
-    const Center(
-      child: Text('Account'),
-    )
+    const SettingsScreen()
   ];
 
   void navigateBottomBar(int index) {
@@ -33,6 +32,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: pages[_selectedIndex],
       bottomNavigationBar: Container(
         height: 70,
