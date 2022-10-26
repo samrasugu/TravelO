@@ -6,12 +6,25 @@ class CustomSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 42,
+      height: 50,
       margin: const EdgeInsets.symmetric(horizontal: 20),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.white,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade200,
+            blurRadius: 10.0,
+            spreadRadius: 10.0,
+          ),
+        ],
+        borderRadius: BorderRadius.circular(15),
+      ),
       child: Material(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(15),
         elevation: 1,
-        child: TextFormField(
+        child: TextField(
           // onFieldSubmitted: (){},
           decoration: InputDecoration(
             suffixIcon: InkWell(
@@ -24,23 +37,10 @@ class CustomSearchBar extends StatelessWidget {
                 ),
               ),
             ),
-            filled: true,
-            fillColor: Colors.white,
-            contentPadding: const EdgeInsets.only(
-              top: 10,
-              left: 20,
-              // bottom: 20,
-            ),
-            border: const OutlineInputBorder(
-              // gapPadding: 100,
-              borderRadius: BorderRadius.all(
-                Radius.circular(15),
-              ),
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 0,
-              ),
-            ),
+            // filled: true,
+            // fillColor: Colors.white,
+            contentPadding: const EdgeInsets.all(10),
+            border: InputBorder.none,
             hintText: 'Search for places...',
             hintStyle: TextStyle(
               color: Colors.grey.shade500,

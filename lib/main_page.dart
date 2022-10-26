@@ -38,7 +38,7 @@ class _MainPageState extends State<MainPage> {
         height: 70,
         margin: const EdgeInsets.all(10),
         child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
           child: BottomNavigationBar(
               currentIndex: _selectedIndex,
               onTap: navigateBottomBar,
