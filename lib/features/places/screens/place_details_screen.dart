@@ -115,7 +115,7 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
                         child: SizedBox(
                           height: 100,
                           child: Column(
-                            children: [
+                            children: const [
                               TabBar(
                                 tabs: [
                                   Tab(

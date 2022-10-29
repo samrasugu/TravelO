@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelo/features/account/screens/settings_list_screen.dart';
+import 'package:travelo/features/explore/screens/explore_screen.dart';
 import 'package:travelo/features/home/home_screen.dart';
 
 class MainPage extends StatefulWidget {
@@ -14,8 +15,7 @@ class _MainPageState extends State<MainPage> {
 
   final List pages = [
     const HomeScreen(),
-    const Center(
-      child: Text('Explore'),
+    const ExploreScreen(
     ),
     const Center(
       child: Text('Favorites'),
