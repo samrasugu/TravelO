@@ -15,8 +15,7 @@ class _MainPageState extends State<MainPage> {
 
   final List pages = [
     const HomeScreen(),
-    const ExploreScreen(
-    ),
+    const ExploreScreen(),
     const Center(
       child: Text('Favorites'),
     ),

@@ -80,39 +80,78 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          GridView.builder(
-              itemCount: 2,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                  ),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: 20,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              image: const DecorationImage(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.8,
+          child: (GridView.builder(
+            itemCount: 10,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 160,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: const DecorationImage(
                             image: NetworkImage(
                               'https://images.pexels.com/photos/14170543/pexels-photo-14170543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                             ),
                             fit: BoxFit.cover,
-                          )),
+                          ),
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                      )
-                    ],
-                  ),
-                );
-              })
-        ],
+                        child: Padding(
+                          padding: const EdgeInsets.all(
+                            10,
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: const [
+                                  SizedBox(
+                                    height: 100,
+                                  ),
+                                  Text(
+                                    'Hotel Macine,',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: const [
+                                  Text(
+                                    'KES 5000/person',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
+          )),
+        ),
       ),
     );
   }
