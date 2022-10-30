@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:travelo/features/home/widgets/custom_search_bar.dart';
+import 'package:travelo/features/places/screens/place_details_screen.dart';
 
 class ExploreScreen extends StatefulWidget {
+  static const String routeName = '/explore-screen';
+
   const ExploreScreen({super.key});
 
   @override
@@ -90,63 +93,69 @@ class _ExploreScreenState extends State<ExploreScreen> {
             ),
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                ),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      height: 160,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: const DecorationImage(
-                            image: NetworkImage(
-                              'https://images.pexels.com/photos/14170543/pexels-photo-14170543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(
-                            10,
-                          ),
-                          child: Column(
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: const [
-                                  SizedBox(
-                                    height: 100,
-                                  ),
-                                  Text(
-                                    'Hotel Macine,',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: const [
-                                  Text(
-                                    'KES 5000/person',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PlaceDetailsScreen()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                  ),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 10,
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        height: 160,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: const DecorationImage(
+                              image: NetworkImage(
+                                'https://images.pexels.com/photos/13664893/pexels-photo-13664893.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(
+                              10,
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: const [
+                                    SizedBox(
+                                      height: 100,
+                                    ),
+                                    Text(
+                                      'Hotel Macine,',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: const [
+                                    Text(
+                                      'KES 5000/person',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               );
             },

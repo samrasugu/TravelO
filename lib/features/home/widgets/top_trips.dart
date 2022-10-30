@@ -68,11 +68,8 @@ class _TopTripsState extends State<TopTrips> {
                     margin: const EdgeInsets.all(5),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => PlaceDetailsScreen(),
-                          ),
-                        );
+                        Navigator.pushNamed(
+                            context, PlaceDetailsScreen.routeName);
                       },
                       child: Column(
                         children: [

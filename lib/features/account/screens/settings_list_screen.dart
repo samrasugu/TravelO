@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:travelo/features/account/widgets/custom_list_tile.dart';
+import 'package:travelo/globals/themer/theme_manager.dart';
 
 class SettingsScreen extends StatelessWidget {
+  static const String routeName = '/settings-screen';
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeNotifier themeNotifier = ThemeNotifier();
+    // final theme = themeNotifier.getTheme();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -71,6 +76,14 @@ class SettingsScreen extends StatelessWidget {
                 trailingicon: Icons.arrow_forward_ios_rounded,
                 title: 'Security Settings',
                 onTap: () {},
+              ),
+              CustomListTile(
+                leadingicon: Icons.brightness_high,
+                trailingicon: Icons.toggle_on,
+                title: 'Theme',
+                onTap: () {
+                  // themeNotifier.setDarkMode();
+                },
               ),
               CustomListTile(
                 leadingicon: Icons.help_outline_rounded,

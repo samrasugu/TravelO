@@ -3,6 +3,7 @@ import 'package:travelo/features/home/widgets/custom_icon.dart';
 import 'package:travelo/features/places/widgets/custom_floating_button.dart';
 
 class PlaceDetailsScreen extends StatefulWidget {
+  static const String routeName = '/places-screen';
   const PlaceDetailsScreen({super.key});
 
   @override
@@ -144,7 +145,7 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
                           ),
                         ),
                       ),
-                      Text(
+                      const Text(
                           'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'),
                       // bookNowButton
                     ],
