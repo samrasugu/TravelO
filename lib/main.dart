@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:travelo/features/auth/screens/signin_screen.dart';
 import 'package:travelo/features/auth/screens/signup_screen.dart';
 import 'package:travelo/globals/themer/theme_manager.dart';
 import 'package:travelo/main_page.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         // ),
         theme: theme.getTheme(),
         onGenerateRoute: (settings) => generateRoute(settings),
-        home: const SignUpScreen(),
+        home: const SignInScreen(),
       ),
     );
   }

@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:travelo/common/widgets/custom_button.dart';
 import 'package:travelo/common/widgets/custom_text_field.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   final signupFormKey = GlobalKey<FormState>();
-  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -35,7 +34,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Container(
                   padding: const EdgeInsets.all(20),
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.55,
+                    height: MediaQuery.of(context).size.height * 0.5,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(
@@ -48,21 +47,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            'Sign Up',
+                            'Sign In',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: CustomTextField(
-                              hintText: 'First Name',
-                              controller: nameController,
                             ),
                           ),
                           const SizedBox(
@@ -94,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: CustomButton(
-                              text: 'Sign Up',
+                              text: 'Sign In',
                               onTap: () {},
                               color: Colors.red,
                             ),
