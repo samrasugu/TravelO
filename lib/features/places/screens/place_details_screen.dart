@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:travelo/features/home/widgets/custom_icon.dart';
-import 'package:travelo/features/places/widgets/custom_floating_button.dart';
 
 class PlaceDetailsScreen extends StatefulWidget {
   static const String routeName = '/places-screen';
@@ -10,21 +9,26 @@ class PlaceDetailsScreen extends StatefulWidget {
   State<PlaceDetailsScreen> createState() => _PlaceDetailsScreenState();
 }
 
-class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
-  // custom book now button
-  // final bookNowButton = Container(
-  //   width: 200.0,
-  //   height: 200.0,
-  //   child: RawMaterialButton(
-  //     onPressed: () {},
-  //     shape: const CircleBorder(),
-  //     elevation: 1.0,
-  //     child: const Icon(
-  //       Icons.arrow_forward,
-  //       size: 20,
-  //     ),
-  //   ),
-  // );
+class _PlaceDetailsScreenState extends State<PlaceDetailsScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController = TabController(length: 2, vsync: this);
+
+  final _tabs = [
+    Tab(
+      text: 'Overview',
+    ),
+    Tab(
+      text: 'Reviews',
+    ),
+  ];
+
+  int initialIndex = 0;
+
+  @override
+  void initState() {
+    // _tabController = TabController(length: 3, vsync: this);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,11 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(
+                    top: 10,
+                    left: 10,
+                    right: 10,
+                  ),
                   child: SizedBox(
                     height: 500,
                     child: Container(
@@ -111,6 +119,23 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
                     children: [
                       // CustomFloatingButton(),
 
+                      TabBar(
+                        controller: _tabController,
+                        labelColor: Colors.red,
+                        labelStyle: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        indicatorColor: Colors.white,
+                        unselectedLabelColor: Colors.grey,
+                        tabs: _tabs,
+                      ),
+                      // Expanded(
+                      //     child: TabBarView(children: [
+                      //   Text('Hello'),
+                      //   Text('Hello'),
+                      // ])),
+
                       DefaultTabController(
                         length: 2,
                         child: SizedBox(
@@ -156,26 +181,36 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen> {
           ),
         ),
       ),
-      floatingActionButton: SizedBox(
-        // width: MediaQuery.of(context).size.width * 0.9,
-        // height: MediaQuery.of(context).size.height * 0.1,
-        width: 200,
-        height: 60,
-        child: FittedBox(
-          child: FloatingActionButton.extended(
-            onPressed: () {},
-            // child: Row(
-            //   children: [
-            //     const Text(
-            //       'Book Now',
-            //     ),
-            //     const Icon(
-            //       Icons.arrow_forward,
-            //     )
-            //   ],
-            // ),
-            icon: Icon(Icons.arrow_forward),
-            label: Text('Book Now'),
+      floatingActionButton: Container(
+        width: MediaQuery.of(context).size.width * 0.70,
+        height: 70,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: FloatingActionButton.extended(
+          onPressed: () {},
+          // icon: Icon(Icons.arrow_forward),
+          backgroundColor: Colors.black,
+          label: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
+              Text(
+                'Book Now',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Icon(
+                Icons.arrow_forward_rounded,
+                color: Colors.white,
+                size: 26,
+              )
+            ],
           ),
         ),
       ),

@@ -5,7 +5,7 @@ import 'package:travelo/features/home/widgets/custom_search_bar.dart';
 import 'package:travelo/features/home/widgets/top_trips.dart';
 
 class HomeScreen extends StatefulWidget {
-    static const String routeName = '/home-screen';
+  static const String routeName = '/home-screen';
   const HomeScreen({super.key});
 
   @override
