@@ -18,25 +18,43 @@ class _TopTripsState extends State<TopTrips> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: Text(
-                  'Top Trips',
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w800,
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Row(
+                  children: const [
+                    Text(
+                      'Top Trips',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      color: Colors.deepOrange,
+                      size: 16,
+                    )
+                  ],
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  'Explore',
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.grey.shade500,
-                    fontWeight: FontWeight.w800,
-                  ),
+                child: Row(
+                  children: [
+                    Text(
+                      'Explore',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.grey.shade500,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.deepOrange,
+                      size: 15,
+                    )
+                  ],
                 ),
               ),
             ],
@@ -76,17 +94,6 @@ class _TopTripsState extends State<TopTrips> {
                           // image
                           SizedBox(
                             height: 130,
-                            // width: 17,
-                            // child: Container(
-                            //   decoration: const BoxDecoration(
-                            //     image: DecorationImage(
-                            //       image: NetworkImage(
-                            //         'https://images.pexels.com/photos/13415959/pexels-photo-13415959.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
-                            //       ),
-                            //       fit: BoxFit.cover,
-                            //     ),
-                            //   ),
-                            // ),
                             child: Padding(
                               padding: const EdgeInsets.all(7.0),
                               child: ClipRRect(
@@ -126,12 +133,12 @@ class _TopTripsState extends State<TopTrips> {
                                       ),
                                     ],
                                   ),
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(5.0),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(5.0),
                                     child: Icon(
                                       Icons.favorite_border,
                                       size: 25,
-                                      color: Colors.red,
+                                      color: Colors.deepOrange.shade300,
                                     ),
                                   ),
                                 )

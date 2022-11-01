@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:travelo/features/home/widgets/custom_icon.dart';
 
 class PlaceDetailsScreen extends StatefulWidget {
@@ -11,24 +12,25 @@ class PlaceDetailsScreen extends StatefulWidget {
 
 class _PlaceDetailsScreenState extends State<PlaceDetailsScreen>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController = TabController(length: 2, vsync: this);
-
-  final _tabs = [
-    Tab(
-      text: 'Overview',
-    ),
-    Tab(
-      text: 'Reviews',
-    ),
-  ];
+  late TabController tabController = TabController(length: 2, vsync: this);
 
   int initialIndex = 0;
 
   @override
   void initState() {
-    // _tabController = TabController(length: 3, vsync: this);
+    // _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    tabController.dispose();
+  }
+
+  // ratings logic
+  double avgRating = 0;
+  double myRating = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen>
           child: Container(
             color: Colors.white,
             child: Column(
-              children: [
+              children: <Widget>[
                 Container(
                   margin: const EdgeInsets.only(
                     top: 10,
@@ -113,69 +115,177 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen>
                     ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(15),
-                  child: Column(
-                    children: [
-                      // CustomFloatingButton(),
-
-                      TabBar(
-                        controller: _tabController,
-                        labelColor: Colors.red,
-                        labelStyle: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        indicatorColor: Colors.white,
-                        unselectedLabelColor: Colors.grey,
-                        tabs: _tabs,
+                SizedBox(
+                  height: 60,
+                  // width: 50,
+                  child: TabBar(
+                    controller: tabController,
+                    labelColor: Colors.deepOrange,
+                    labelStyle: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    indicatorColor: Colors.transparent,
+                    unselectedLabelColor: Colors.grey,
+                    tabs: const [
+                      Tab(
+                        text: 'Overview',
                       ),
-                      // Expanded(
-                      //     child: TabBarView(children: [
-                      //   Text('Hello'),
-                      //   Text('Hello'),
-                      // ])),
-
-                      DefaultTabController(
-                        length: 2,
-                        child: SizedBox(
-                          height: 100,
-                          child: Column(
-                            children: const [
-                              TabBar(
-                                tabs: [
-                                  Tab(
-                                    icon: Icon(
-                                      Icons.home,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  Tab(
-                                    icon: Icon(
-                                      Icons.settings,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Expanded(
-                                child: TabBarView(
-                                  children: [
-                                    Text('Hello'),
-                                    Text('Hello'),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const Text(
-                          'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'),
-                      // bookNowButton
+                      Tab(
+                        text: 'Reviews',
+                      )
                     ],
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 400,
+                  width: 350,
+                  child: TabBarView(
+                    controller: tabController,
+                    children: [
+                      Column(
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: 8.0, bottom: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.grey.shade100,
+                                      ),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Icon(
+                                          Icons.lock_clock,
+                                          size: 30,
+                                          color: Colors.deepOrange,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: const [
+                                        Text(
+                                          'DURATION',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          '5 hours',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                // Expanded(child: child)
+
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.grey.shade100,
+                                      ),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(5.0),
+                                        child: Icon(
+                                          Icons.star,
+                                          size: 30,
+                                          color: Colors.deepOrange,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: const [
+                                        Text(
+                                          'RATING',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          '4.8 out of 5',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            children: const [
+                              Text(
+                                  'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet')
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          const Text(
+                            'Rate the place',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
+                          ),
+                          RatingBar.builder(
+                            initialRating: myRating,
+                            minRating: 1,
+                            direction: Axis.horizontal,
+                            allowHalfRating: true,
+                            itemCount: 5,
+                            itemPadding: const EdgeInsets.symmetric(
+                              horizontal: 4,
+                            ),
+                            itemBuilder: (context, _) => Icon(
+                              Icons.star,
+                              color: Colors.deepOrange.shade300,
+                              // size: 5,
+                            ),
+                            onRatingUpdate: (rating) {},
+                          ),
+                          
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -185,11 +295,12 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen>
         width: MediaQuery.of(context).size.width * 0.70,
         height: 70,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(4),
+          // color: Colors.transparent,
         ),
         child: FloatingActionButton.extended(
           onPressed: () {},
-          // icon: Icon(Icons.arrow_forward),
+          elevation: 1.0,
           backgroundColor: Colors.black,
           label: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

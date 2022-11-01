@@ -29,11 +29,24 @@ class CustomSearchBar extends StatelessWidget {
           decoration: InputDecoration(
             suffixIcon: InkWell(
               onTap: () {},
-              child: const Padding(
-                padding: EdgeInsets.only(right: 8.0),
-                child: Icon(
-                  Icons.search,
-                  color: Colors.red,
+              child: Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade200,
+                        blurRadius: 5.0,
+                        spreadRadius: 3.0,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    Icons.search,
+                    color: Colors.deepOrange.shade300,
+                  ),
                 ),
               ),
             ),

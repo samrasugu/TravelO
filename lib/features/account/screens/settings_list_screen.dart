@@ -62,7 +62,7 @@ class SettingsScreen extends StatelessWidget {
               CustomListTile(
                 leadingicon: Icons.travel_explore,
                 trailingicon: Icons.arrow_forward_ios_rounded,
-                title: 'My Ride History',
+                title: 'My Travel History',
                 onTap: () {},
               ),
               CustomListTile(

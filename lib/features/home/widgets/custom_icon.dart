@@ -45,7 +45,7 @@ class CustomIcon extends StatelessWidget {
             child: Icon(
               icon,
               size: 25,
-              color: Colors.red,
+              color: Colors.deepOrange.shade300,
             ),
           ),
         ),
