@@ -31,10 +31,14 @@ class _FavoritePlacesState extends State<FavoritePlaces> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height * 0.8,
           child: Container(
-            padding: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(
+              top: 10,
+              left: 10.0,
+              right: 10.0,
+            ),
             child: GridView.builder(
                 itemCount: 5,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                 ),
                 scrollDirection: Axis.vertical,
@@ -64,7 +68,7 @@ class _FavoritePlacesState extends State<FavoritePlaces> {
                         children: [
                           // image
                           SizedBox(
-                            height: 120,
+                            height: 90,
                             child: Padding(
                               padding: const EdgeInsets.all(7.0),
                               child: ClipRRect(

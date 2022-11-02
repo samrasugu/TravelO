@@ -69,7 +69,7 @@ class _TopTripsState extends State<TopTrips> {
                 itemCount: 2,
                 itemBuilder: (context, index) {
                   return Container(
-                    width: 170,
+                    width: 155,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(
                         Radius.circular(20),
