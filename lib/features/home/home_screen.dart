@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:travelo/features/home/widgets/categories.dart';
 import 'package:travelo/features/home/widgets/custom_icon.dart';
@@ -13,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,8 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: const [
-                      CircleAvatar(
+                    children: [
+                      const CircleAvatar(
                         backgroundColor: Colors.white,
                         radius: 17,
                         child: CircleAvatar(
@@ -43,12 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           radius: 17,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 15,
                       ),
                       Text(
-                        'Hi, Sam!',
-                        style: TextStyle(
+                        'Hi, ${user?.displayName}',
+                        style: const TextStyle(
                           fontWeight: FontWeight.w900,
                         ),
                       )

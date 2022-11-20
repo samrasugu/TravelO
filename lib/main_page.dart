@@ -5,6 +5,7 @@ import 'package:travelo/features/favorites/screens/favorite_places.dart';
 import 'package:travelo/features/home/home_screen.dart';
 
 class MainPage extends StatefulWidget {
+  static const String routeName = '/main-screen';
   const MainPage({super.key});
 
   @override

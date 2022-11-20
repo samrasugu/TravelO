@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:travelo/common/widgets/custom_button.dart';
 import 'package:travelo/common/widgets/custom_text_field.dart';
+import 'package:travelo/features/auth/services/auth_services.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -10,9 +12,24 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final signupFormKey = GlobalKey<FormState>();
+  final signInFormKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  void signInUser() async {
+    AuthServices(FirebaseAuth.instance).signInWithEmail(
+      email: emailController.text,
+      password: passwordController.text,
+      context: context,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +59,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ),
                     child: Form(
-                      key: signupFormKey,
+                      key: signInFormKey,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -83,7 +100,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: CustomButton(
                               text: 'Sign In',
-                              onTap: () {},
+                              onTap: () {
+                                if (signInFormKey.currentState!.validate()) {
+                                  signInUser();
+                                }
+                              },
                               color: Colors.red,
                             ),
                           ),

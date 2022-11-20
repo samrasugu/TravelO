@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       ),
       // theme: theme.getTheme(),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: const MainPage(),
+      home: const SignUpScreen(),
     );
   }
 }

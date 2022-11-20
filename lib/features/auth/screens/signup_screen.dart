@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:travelo/common/widgets/custom_button.dart';
 import 'package:travelo/common/widgets/custom_text_field.dart';
+import 'package:travelo/features/auth/services/auth_services.dart';
+import 'package:travelo/features/home/home_screen.dart';
+import 'package:travelo/main_page.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -14,6 +18,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  void signUpUser() async {
+    AuthServices(FirebaseAuth.instance).signUpWithEmail(
+      context: context,
+      email: emailController.text,
+      password: passwordController.text,
+      firstName: nameController.text,
+    );
+    // Navigator.pushReplacementNamed(context, MainPage.routeName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +117,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: CustomButton(
                               text: 'Sign Up',
-                              onTap: () {},
+                              onTap: () {
+                                if (signupFormKey.currentState!.validate()) {
+                                  signUpUser();
+                                }
+                              },
                               color: Colors.red,
                             ),
                           ),
