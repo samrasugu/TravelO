@@ -61,4 +61,13 @@ class AuthServices {
       showSnackBar(context, e.message!);
     }
   }
+
+  // SignOut
+  Future<void> signOut(BuildContext context) async {
+    try {
+      await _auth.signOut();
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message!);
+    }
+  }
 }

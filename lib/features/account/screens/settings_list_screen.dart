@@ -99,7 +99,9 @@ class SettingsScreen extends StatelessWidget {
                 leadingicon: Icons.logout_rounded,
                 trailingicon: Icons.arrow_forward_ios_rounded,
                 title: 'LogOut',
-                onTap: () {},
+                onTap: () {
+                  context.read<AuthServices>().signOut(context);
+                },
               ),
             ],
           )
