@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travelo/features/account/widgets/custom_list_tile.dart';
+import 'package:travelo/features/auth/services/auth_services.dart';
 import 'package:travelo/globals/themer/theme_manager.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -8,6 +10,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.read<AuthServices>().user;
+
     final ThemeNotifier themeNotifier = ThemeNotifier();
     // final theme = themeNotifier.getTheme();
 
@@ -27,19 +31,19 @@ class SettingsScreen extends StatelessWidget {
           // user profile
           Center(
             child: Column(
-              children: const [
-                CircleAvatar(
+              children: [
+                const CircleAvatar(
                   radius: 60,
                   backgroundImage: NetworkImage(
                     'https://images.pexels.com/photos/13600148/pexels-photo-13600148.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  'Sam Rasugu',
-                  style: TextStyle(
+                  '${user.displayName}',
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),

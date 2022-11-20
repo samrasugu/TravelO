@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:travelo/features/auth/services/auth_services.dart';
 import 'package:travelo/features/home/widgets/categories.dart';
 import 'package:travelo/features/home/widgets/custom_icon.dart';
 import 'package:travelo/features/home/widgets/custom_search_bar.dart';
@@ -14,9 +16,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
+      final user = context.read<AuthServices>().user;
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -49,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 15,
                       ),
                       Text(
-                        'Hi, ${user?.displayName}',
+                        'Hi, ${user.displayName}',
                         style: const TextStyle(
                           fontWeight: FontWeight.w900,
                         ),

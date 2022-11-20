@@ -6,6 +6,11 @@ class AuthServices {
   final FirebaseAuth _auth;
   AuthServices(this._auth);
 
+  User get user => _auth.currentUser!;
+
+  // STATE PERSISTENCE
+  Stream<User?> get authState => _auth.authStateChanges();
+
   // Email SignUp
   Future<void> signUpWithEmail({
     required String email,
@@ -51,7 +56,7 @@ class AuthServices {
   Future<void> sendEmailVerification(BuildContext context) async {
     try {
       await _auth.currentUser!.sendEmailVerification();
-      showSnackBar(context, 'Email verification send');
+      showSnackBar(context, 'Email verification sent');
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!);
     }
