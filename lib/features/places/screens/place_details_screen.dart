@@ -103,12 +103,25 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen>
                                     ),
                                   ),
                                   const SizedBox(
-                                    height: 310,
+                                    height: 290,
                                   ),
                                   Row(
                                     children: [
                                       Text(
                                         '${placeData['name']}',
+                                        style: const TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w800,
+                                          color: Colors.white,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '${placeData['county']}',
                                         style: const TextStyle(
                                           fontSize: 22,
                                           fontWeight: FontWeight.w800,
