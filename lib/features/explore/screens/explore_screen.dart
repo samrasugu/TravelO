@@ -131,7 +131,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                 height: 10,
                               ),
                               SizedBox(
-                                height: 180,
+                                height: 158,
                                 child: Container(
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
@@ -153,7 +153,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                               CrossAxisAlignment.end,
                                           children: [
                                             const SizedBox(
-                                              height: 120,
+                                              height: 100,
                                             ),
                                             Text(
                                               '${placesData['name']},',
