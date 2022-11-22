@@ -89,14 +89,14 @@ class _TopTripsState extends State<TopTrips> {
                       itemBuilder: (context, index) {
                         final placesData = places![index];
                         return Container(
-                          width: 160,
+                          width: 170,
                           decoration: BoxDecoration(
                               borderRadius: const BorderRadius.all(
                                 Radius.circular(10),
                               ),
                               color: Colors.white,
                               border: Border.all(
-                                color: Colors.grey.shade200,
+                                color: Colors.grey.shade300,
                               )
                               // boxShadow: [
                               //   BoxShadow(

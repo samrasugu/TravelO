@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travelo/common/widgets/loader.dart';
+import 'package:travelo/features/explore/services/explore_services.dart';
 import 'package:travelo/features/home/widgets/custom_search_bar.dart';
 import 'package:travelo/features/places/screens/place_details_screen.dart';
 
@@ -12,6 +14,21 @@ class ExploreScreen extends StatefulWidget {
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
+  List? places;
+
+  final ExploreServices exploreServices = ExploreServices();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchPlacesData();
+  }
+
+  fetchPlacesData() async {
+    places = await exploreServices.fetchPlaces(context);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -85,83 +102,91 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
         ),
         body: SingleChildScrollView(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.8,
-            child: (GridView.builder(
-              itemCount: 10,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-              ),
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => PlaceDetailsScreen()));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
+          child: places == null
+              ? const Loader()
+              : SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: (GridView.builder(
+                    itemCount: places!.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
                     ),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        SizedBox(
-                          height: 160,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: NetworkImage(
-                                  'https://images.pexels.com/photos/13664893/pexels-photo-13664893.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      final placesData = places![index];
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const PlaceDetailsScreen(),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(
-                                10,
-                              ),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: const [
-                                      SizedBox(
-                                        height: 100,
-                                      ),
-                                      Text(
-                                        'Hotel Macine,',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: const [
-                                      Text(
-                                        'KES 5000/person',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              },
-            )),
-          ),
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              SizedBox(
+                                height: 180,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                        placesData['images'][0]!,
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(
+                                      10,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            const SizedBox(
+                                              height: 120,
+                                            ),
+                                            Text(
+                                              '${placesData['name']},',
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'KES ${placesData['price']}',
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w600),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  )),
+                ),
         ),
       ),
     );
