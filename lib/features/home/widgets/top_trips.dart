@@ -88,6 +88,7 @@ class _TopTripsState extends State<TopTrips> {
                       itemCount: places!.length,
                       itemBuilder: (context, index) {
                         final placesData = places![index];
+                        final place = places![index]['name'];
                         return Container(
                           width: 170,
                           decoration: BoxDecoration(
@@ -111,7 +112,7 @@ class _TopTripsState extends State<TopTrips> {
                             onTap: () {
                               Navigator.pushNamed(
                                   context, PlaceDetailsScreen.routeName,
-                                  arguments: {placesData['name']});
+                                  arguments: placesData['name']);
                             },
                             child: Column(
                               children: [

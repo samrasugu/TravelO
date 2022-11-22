@@ -117,11 +117,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       final placesData = places![index];
                       return GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const PlaceDetailsScreen(),
-                            ),
-                          );
+                          Navigator.pushNamed(
+                              context, PlaceDetailsScreen.routeName,
+                              arguments: placesData['name']);
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(

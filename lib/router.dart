@@ -7,7 +7,7 @@ import 'package:travelo/main_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
-     case MainPage.routeName:
+    case MainPage.routeName:
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const MainPage(),
@@ -18,9 +18,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         builder: (_) => const HomeScreen(),
       );
     case PlaceDetailsScreen.routeName:
+      var place = routeSettings.arguments as String;
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => const PlaceDetailsScreen(),
+        builder: (_) => PlaceDetailsScreen(
+          place: place,
+        ),
       );
     case ExploreScreen.routeName:
       return MaterialPageRoute(
