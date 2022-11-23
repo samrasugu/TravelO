@@ -38,10 +38,10 @@ class SettingsScreen extends StatelessWidget {
                     Navigator.pushNamed(context, ProfilePage.routeName,
                         arguments: {});
                   },
-                  child: const CircleAvatar(
+                  child: CircleAvatar(
                     radius: 60,
                     backgroundImage: NetworkImage(
-                      'https://images.pexels.com/photos/13600148/pexels-photo-13600148.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+                      user.photoURL!,
                     ),
                   ),
                 ),

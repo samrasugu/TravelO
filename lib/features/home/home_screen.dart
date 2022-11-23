@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travelo/features/account/screens/profile_screen.dart';
 import 'package:travelo/features/auth/services/auth_services.dart';
 import 'package:travelo/features/home/widgets/categories.dart';
 import 'package:travelo/features/home/widgets/custom_icon.dart';
@@ -18,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-      final user = context.read<AuthServices>().user;
+    final user = context.read<AuthServices>().user;
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -37,14 +38,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Row(
                     children: [
-                      const CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 17,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, ProfilePage.routeName);
+                        },
                         child: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                            'https://images.pexels.com/photos/13600148/pexels-photo-13600148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                          ),
+                          backgroundColor: Colors.white,
                           radius: 17,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                              user.photoURL!,
+                            ),
+                            radius: 17,
+                          ),
                         ),
                       ),
                       const SizedBox(

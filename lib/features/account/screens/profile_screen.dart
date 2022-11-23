@@ -23,7 +23,17 @@ class _ProfilePageState extends State<ProfilePage> {
   String? image;
 
   void uploadImage() async {
-    accountServices.uploadImage(context);
+    await accountServices.uploadImage(context);
+    setState(() {});
+  }
+
+  // update profile
+  void updateProfile() async {
+    await accountServices.updateDetails(
+        context: context,
+        email: emailController.text.trim(),
+        displayName:
+            "${firstNameController.text.trim()}${lastNameController.text.trim()}");
     setState(() {});
   }
 
@@ -45,64 +55,68 @@ class _ProfilePageState extends State<ProfilePage> {
             color: Colors.deepOrange,
           ),
         ),
-        body: Column(
-          children: [
-            Center(
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      uploadImage();
-                    },
-                    child: CircleAvatar(
-                      radius: 60,
-                      backgroundImage: NetworkImage(
-                        user.photoURL!,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        uploadImage();
+                      },
+                      child: CircleAvatar(
+                        radius: 60,
+                        backgroundImage: NetworkImage(
+                          user.photoURL!,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Container(
-                      color: Colors.black12,
-                      height: 1,
+                    const SizedBox(
+                      height: 50,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  // form fields
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 25.0, vertical: 20),
-                    child: CustomTextField(
-                        hintText: '${user.displayName}',
-                        controller: firstNameController),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 25.0,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        color: Colors.black12,
+                        height: 1,
+                      ),
                     ),
-                    child: CustomTextField(
-                        hintText: '${user.email}',
-                        controller: firstNameController),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 25, vertical: 20),
-                    child: CustomButton(
-                      text: 'Update',
-                      onTap: () {},
-                      color: Colors.deepOrange,
+                    const SizedBox(
+                      height: 20,
                     ),
-                  )
-                ],
-              ),
-            )
-          ],
+                    // form fields
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 25.0, vertical: 20),
+                      child: CustomTextField(
+                          hintText: '${user.displayName}',
+                          controller: firstNameController),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 25.0,
+                      ),
+                      child: CustomTextField(
+                          hintText: '${user.email}',
+                          controller: emailController),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 25, vertical: 20),
+                      child: CustomButton(
+                        text: 'Update',
+                        onTap: () {
+                          updateProfile();
+                        },
+                        color: Colors.deepOrange,
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ));
   }
 }
