@@ -41,6 +41,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 color: Colors.deepOrange.shade300,
               ),
             ),
+            elevation: 0,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

@@ -3,6 +3,7 @@ import 'package:travelo/features/account/screens/profile_screen.dart';
 import 'package:travelo/features/account/screens/settings_list_screen.dart';
 import 'package:travelo/features/auth/screens/signin_screen.dart';
 import 'package:travelo/features/auth/screens/signup_screen.dart';
+import 'package:travelo/features/categories/screens/categories_screen.dart';
 import 'package:travelo/features/explore/screens/explore_screen.dart';
 import 'package:travelo/features/home/home_screen.dart';
 import 'package:travelo/features/places/screens/place_details_screen.dart';
@@ -47,6 +48,14 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const ProfilePage(),
+      );
+    case CategoriesScreen.routeName:
+      var category = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => CategoriesScreen(
+          category: category
+        ),
       );
     default:
       return MaterialPageRoute(

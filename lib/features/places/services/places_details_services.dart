@@ -30,7 +30,7 @@ class PlaceDetailsServices {
     } on FirebaseException catch (e) {
       showSnackBar(context, e.message!);
     }
-    print(placeData);
+    // print(placeData);
     return placeData;
   }
 

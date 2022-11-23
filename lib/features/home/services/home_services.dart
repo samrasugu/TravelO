@@ -16,4 +16,18 @@ class HomeServices {
     }
     return placesList;
   }
+
+  // fetch categories
+  Future<List?> fetchCategories(BuildContext context) async {
+    List? categoriesList = [];
+
+    try {
+      QuerySnapshot querySnapshot =
+          await _fireStore.collection("categories").get();
+      categoriesList = querySnapshot.docs.map((doc) => doc.data()).toList();
+    } on FirebaseException catch (e) {
+      showSnackBar(context, e.message!);
+    }
+    return categoriesList;
+  }
 }
