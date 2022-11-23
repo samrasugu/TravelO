@@ -111,7 +111,36 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                         color: Colors.deepOrange,
                       ),
-                    )
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    user.emailVerified
+                        ? const SizedBox(
+                            height: 10,
+                          )
+                        : const Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 25.0,
+                            ),
+                            child: ListTile(
+                              tileColor: Colors.red,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(7))),
+                              leading: Icon(
+                                Icons.assignment_late_rounded,
+                                color: Colors.white,
+                              ),
+                              title: Text(
+                                'Email not verified!\nCheck your inbox',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          )
                   ],
                 ),
               )
