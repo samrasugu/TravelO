@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travelo/features/account/screens/profile_screen.dart';
 import 'package:travelo/features/account/widgets/custom_list_tile.dart';
 import 'package:travelo/features/auth/services/auth_services.dart';
 import 'package:travelo/globals/themer/theme_manager.dart';
@@ -32,10 +33,16 @@ class SettingsScreen extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                const CircleAvatar(
-                  radius: 60,
-                  backgroundImage: NetworkImage(
-                    'https://images.pexels.com/photos/13600148/pexels-photo-13600148.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, ProfilePage.routeName,
+                        arguments: {});
+                  },
+                  child: const CircleAvatar(
+                    radius: 60,
+                    backgroundImage: NetworkImage(
+                      'https://images.pexels.com/photos/13600148/pexels-photo-13600148.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+                    ),
                   ),
                 ),
                 const SizedBox(

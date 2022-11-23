@@ -2,11 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:travelo/common/widgets/custom_button.dart';
 import 'package:travelo/common/widgets/custom_text_field.dart';
+import 'package:travelo/features/auth/screens/signin_screen.dart';
 import 'package:travelo/features/auth/services/auth_services.dart';
 import 'package:travelo/features/home/home_screen.dart';
 import 'package:travelo/main_page.dart';
 
 class SignUpScreen extends StatefulWidget {
+  static const String routeName = '/signup-page';
+
   const SignUpScreen({super.key});
 
   @override
@@ -133,17 +136,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  'First time? ',
+                              children: [
+                                const Text(
+                                  'Have an account? ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                                Text(
-                                  'Sign In',
-                                  style: TextStyle(
-                                    color: Colors.blue,
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, SignInScreen.routeName,
+                                        arguments: {});
+                                  },
+                                  child: const Text(
+                                    'Sign In',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                    ),
                                   ),
                                 ),
                               ],

@@ -2,9 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:travelo/common/widgets/custom_button.dart';
 import 'package:travelo/common/widgets/custom_text_field.dart';
+import 'package:travelo/features/auth/screens/signup_screen.dart';
 import 'package:travelo/features/auth/services/auth_services.dart';
 
 class SignInScreen extends StatefulWidget {
+  static const String routeName = '/signin-page';
   const SignInScreen({super.key});
 
   @override
@@ -116,17 +118,24 @@ class _SignInScreenState extends State<SignInScreen> {
                                 const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
+                              children: [
+                                const Text(
                                   'First time? ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                                Text(
-                                  'Sign In',
-                                  style: TextStyle(
-                                    color: Colors.blue,
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, SignUpScreen.routeName,
+                                        arguments: {});
+                                  },
+                                  child: Text(
+                                    'Sign Up',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                    ),
                                   ),
                                 ),
                               ],

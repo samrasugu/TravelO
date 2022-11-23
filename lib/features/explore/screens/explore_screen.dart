@@ -103,7 +103,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
         ),
         body: SingleChildScrollView(
           child: places == null
-              ? const Loader()
+              ? const Center(child: Loader())
               : SizedBox(
                   height: MediaQuery.of(context).size.height * 0.8,
                   child: (GridView.builder(

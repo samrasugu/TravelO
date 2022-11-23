@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:travelo/features/account/screens/profile_screen.dart';
 import 'package:travelo/features/account/screens/settings_list_screen.dart';
+import 'package:travelo/features/auth/screens/signin_screen.dart';
+import 'package:travelo/features/auth/screens/signup_screen.dart';
 import 'package:travelo/features/explore/screens/explore_screen.dart';
 import 'package:travelo/features/home/home_screen.dart';
 import 'package:travelo/features/places/screens/place_details_screen.dart';
@@ -12,10 +15,15 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const MainPage(),
       );
-    case HomeScreen.routeName:
+    case SignUpScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => const HomeScreen(),
+        builder: (_) => const SignUpScreen(),
+      );
+    case SignInScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const SignInScreen(),
       );
     case PlaceDetailsScreen.routeName:
       var place = routeSettings.arguments as String;
@@ -34,6 +42,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const SettingsScreen(),
+      );
+    case ProfilePage.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const ProfilePage(),
       );
     default:
       return MaterialPageRoute(
