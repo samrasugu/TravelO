@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travelo/common/widgets/custom_button.dart';
 import 'package:travelo/common/widgets/custom_text_field.dart';
+import 'package:travelo/features/account/services/account_services.dart';
 import 'package:travelo/features/auth/services/auth_services.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -16,6 +17,15 @@ class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+
+  final AccountServices accountServices = AccountServices();
+
+  String? image;
+
+  void uploadImage() async {
+    accountServices.uploadImage(context);
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +50,15 @@ class _ProfilePageState extends State<ProfilePage> {
             Center(
               child: Column(
                 children: [
-                  const CircleAvatar(
-                    radius: 60,
-                    backgroundImage: NetworkImage(
-                      'https://images.pexels.com/photos/13600148/pexels-photo-13600148.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+                  GestureDetector(
+                    onTap: () {
+                      uploadImage();
+                    },
+                    child: CircleAvatar(
+                      radius: 60,
+                      backgroundImage: NetworkImage(
+                        user.photoURL!,
+                      ),
                     ),
                   ),
                   const SizedBox(
