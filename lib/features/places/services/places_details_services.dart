@@ -18,14 +18,6 @@ class PlaceDetailsServices {
           .where('name', isEqualTo: place)
           .limit(1)
           .get();
-      // final docRef = _fireStore.collection('places').where(
-      //       'name',
-      //       isEqualTo: place,
-      //     ).get();
-
-      // docRef.get().then((doc) {
-      // final placeData = docRef.data() as Map<String, dynamic>;
-      // });
       placeData = querySnapshot.docs.map((doc) => doc.data()).toList();
     } on FirebaseException catch (e) {
       showSnackBar(context, e.message!);

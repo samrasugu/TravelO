@@ -7,6 +7,7 @@ import 'package:travelo/features/categories/screens/categories_screen.dart';
 import 'package:travelo/features/explore/screens/explore_screen.dart';
 import 'package:travelo/features/home/home_screen.dart';
 import 'package:travelo/features/places/screens/place_details_screen.dart';
+import 'package:travelo/features/search/screens/search_screen.dart';
 import 'package:travelo/main_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -55,6 +56,14 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => CategoriesScreen(
           category: category
+        ),
+      );
+    case SearchPlacesScreen.routeName:
+      var place = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => SearchPlacesScreen(
+          place: place
         ),
       );
     default:

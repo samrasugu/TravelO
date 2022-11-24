@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:travelo/features/search/screens/search_screen.dart';
 
-class CustomSearchBar extends StatelessWidget {
+class CustomSearchBar extends StatefulWidget {
   const CustomSearchBar({super.key});
+
+  @override
+  State<CustomSearchBar> createState() => _CustomSearchBarState();
+}
+
+class _CustomSearchBarState extends State<CustomSearchBar> {
+  void navigateToSearchScreen(String place) async {
+    Navigator.pushNamed(context, SearchPlacesScreen.routeName,
+        arguments: place);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +35,8 @@ class CustomSearchBar extends StatelessWidget {
       child: Material(
         borderRadius: BorderRadius.circular(15),
         elevation: 1,
-        child: TextField(
-          // onFieldSubmitted: (){},
+        child: TextFormField(
+          onFieldSubmitted: navigateToSearchScreen,
           decoration: InputDecoration(
             suffixIcon: InkWell(
               onTap: () {},
