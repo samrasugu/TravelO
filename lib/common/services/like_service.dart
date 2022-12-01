@@ -19,6 +19,18 @@ class LikeService {
         "likedplaces": FieldValue.arrayUnion([place]),
       });
 
+      // check if user has liked place
+      bool isLiked;
+      List? userData;
+      final userDocRef = _firestore.collection("users").doc(user.uid);
+      userDocRef.get().then((DocumentSnapshot doc) {
+        final userData = doc.data() as Map<String, dynamic>;
+      }, onError: (e) {
+        showSnackBar(context, e.message!);
+      });
+
+      if (userData?[0]['likedplaces']) {}
+
       // QuerySnapshot querySnapshot = await _firestore
       //     .collection("places")
       //     .limit(1)

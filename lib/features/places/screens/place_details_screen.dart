@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:travelo/common/services/like_service.dart';
 import 'package:travelo/common/widgets/loader.dart';
 import 'package:travelo/features/home/widgets/custom_icon.dart';
 import 'package:travelo/features/places/services/places_details_services.dart';
@@ -40,6 +41,12 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen>
   void dispose() {
     super.dispose();
     tabController.dispose();
+  }
+
+  // like place
+  final likeService = LikeService();
+  likePlace(String place) async {
+    await likeService.likePlace(context: context, place: place);
   }
 
   // ratings logic
@@ -97,7 +104,9 @@ class _PlaceDetailsScreenState extends State<PlaceDetailsScreen>
                                         ),
                                         CustomIcon(
                                           icon: Icons.favorite_border_rounded,
-                                          onTap: () {},
+                                          onTap: () {
+                                            likePlace(placeData['name']);
+                                          },
                                         ),
                                       ],
                                     ),

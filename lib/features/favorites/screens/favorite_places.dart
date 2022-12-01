@@ -45,9 +45,10 @@ class _FavoritePlacesState extends State<FavoritePlaces> {
                 itemBuilder: (context, index) {
                   return Container(
                     width: 170,
+                    height: 200,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(
-                        Radius.circular(20),
+                        Radius.circular(10),
                       ),
                       color: Colors.white,
                       boxShadow: [
@@ -68,12 +69,12 @@ class _FavoritePlacesState extends State<FavoritePlaces> {
                         children: [
                           // image
                           SizedBox(
-                            height: 90,
+                            height: 100,
                             child: Padding(
                               padding: const EdgeInsets.all(7.0),
                               child: ClipRRect(
                                 borderRadius: const BorderRadius.all(
-                                  Radius.circular(20),
+                                  Radius.circular(10),
                                 ),
                                 child: Image.network(
                                   'https://images.pexels.com/photos/13415959/pexels-photo-13415959.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
