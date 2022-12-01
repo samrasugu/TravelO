@@ -6,11 +6,17 @@ class HomeServices {
   final _fireStore = FirebaseFirestore.instance;
   Future<List?> fetchPlaces(BuildContext context) async {
     List? placesList = [];
+    List? placesId = [];
 
     try {
       QuerySnapshot querySnapshot =
           await _fireStore.collection('places').limit(2).get();
       placesList = querySnapshot.docs.map((doc) => doc.data()).toList();
+
+      QuerySnapshot docIdSnapshot =
+          await _fireStore.collection('places').limit(2).get();
+      placesId = docIdSnapshot.docs.map((doc) => doc.id).toList();
+      print(placesId);
     } on FirebaseException catch (e) {
       showSnackBar(context, e.message!);
     }

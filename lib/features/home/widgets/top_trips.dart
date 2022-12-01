@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelo/common/services/like_service.dart';
 import 'package:travelo/common/widgets/loader.dart';
 import 'package:travelo/features/home/services/home_services.dart';
 import 'package:travelo/features/places/screens/place_details_screen.dart';
@@ -24,6 +25,12 @@ class _TopTripsState extends State<TopTrips> {
   fetchPlaces() async {
     places = await homeServices.fetchPlaces(context);
     setState(() {});
+  }
+
+  final likeService = LikeService();
+  // like a place
+  likePlace(String place) async {
+    await likeService.likePlace(context: context, place: place);
   }
 
   @override
@@ -162,10 +169,15 @@ class _TopTripsState extends State<TopTrips> {
                                         ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(5.0),
-                                          child: Icon(
-                                            Icons.favorite_border,
-                                            size: 25,
-                                            color: Colors.deepOrange.shade300,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              likePlace(placesData['name']);
+                                            },
+                                            child: Icon(
+                                              Icons.favorite_border,
+                                              size: 25,
+                                              color: Colors.deepOrange.shade300,
+                                            ),
                                           ),
                                         ),
                                       )

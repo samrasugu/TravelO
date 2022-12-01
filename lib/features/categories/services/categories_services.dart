@@ -19,7 +19,7 @@ class CategoryServices {
     } on FirebaseException catch (e) {
       showSnackBar(context, e.message!);
     }
-    print(placesData);
+    // print(placesData);
     return placesData;
   }
 }
